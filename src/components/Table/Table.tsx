@@ -138,8 +138,17 @@ const Table: React.FC<TableProps> = ({ headers, items, deleteProduct, pageResult
                     >¿Estas seguro de eliminar el producto {selectedProduct && selectedProduct.name}?</p>
                 </section>
                 <footer>
-                    <Button onClick={closeModal}>Cancelar</Button>
-                    <Button onClick={() => handleDeleteProduct(selectedProduct && selectedProduct.id)} buttonStyle="primary">Confirmar</Button>
+                    <Button
+                        onClick={closeModal}
+                    >
+                        Cancelar
+                    </Button>
+                    <Button
+                        onClick={() => handleDeleteProduct(selectedProduct && selectedProduct.id)}
+                        buttonStyle="primary"
+                    >
+                        Confirmar
+                    </Button>
                 </footer>
             </Modal>
         </div>

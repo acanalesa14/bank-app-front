@@ -1,0 +1,16 @@
+.spinner {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spinnerMovement 1s infinite ease-in-out;
+    
+    @keyframes spinnerMovement {
+        0%{
+            transform: rotateZ(0deg);
+        }
+        100% {
+            transform: rotateZ(360deg);
+        }
+    }
+}

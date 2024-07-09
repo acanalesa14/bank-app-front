@@ -1,5 +1,5 @@
 import { axiosService } from '@/utils/Utils';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Home from './Home';
 
@@ -27,7 +27,7 @@ describe('Home component', () => {
     ];
 
     test('renders table with products data and handles interactions', async () => {
-        (axiosService as jest.MockedFunction<typeof axiosService>).mockResolvedValue({data: mockData});
+        (axiosService as jest.MockedFunction<typeof axiosService>).mockResolvedValue({ data: mockData });
 
         render(
             <MemoryRouter>
@@ -42,5 +42,38 @@ describe('Home component', () => {
             });
         });
         expect(axiosService).toHaveBeenCalledWith({ method: 'get', url: '/bp/products' });
+    });
+
+
+    test('deleteProduct deletes a product correctly', async () => {
+        (axiosService as jest.MockedFunction<typeof axiosService>).mockResolvedValueOnce({ data: mockData });
+
+        render(<MemoryRouter>
+            <Home />
+        </MemoryRouter>);
+
+        await waitFor(() => {
+            mockData.forEach((item) => {
+                expect(screen.getByText(item.name)).toBeInTheDocument();
+                expect(screen.getByText(item.description)).toBeInTheDocument();
+            });
+        });
+
+        const mockDeletedResponse = { message: 'Product removed successfully' };
+        (axiosService as jest.MockedFunction<typeof axiosService>).mockResolvedValueOnce(mockDeletedResponse);
+
+
+        const deleteButton = screen.getAllByTestId('option')[1];
+        fireEvent.click(deleteButton);
+
+        const confirmButton = screen.getByText('Confirmar');
+        fireEvent.click(confirmButton);
+
+        await waitFor(() => {
+            expect(axiosService).toHaveBeenCalledWith({
+                method: 'delete',
+                url: `/bp/products/${mockData[0].id}`,
+            });
+        });
     });
 });

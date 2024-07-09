@@ -3,6 +3,7 @@ import style from './Home.module.scss';
 import Button from '@/components/Button/Button';
 import InputSearch from '@/components/InputSearch/InputSearch';
 import Layout from '@/components/Layout/Layout';
+import Spinner from '@/components/Spinner/Spinner';
 import Table from '@/components/Table/Table';
 import { axiosService } from '@/utils/Utils';
 import { useEffect, useState } from 'react';
@@ -21,6 +22,7 @@ const Home = () => {
     const [pageResults, setPageResults] = useState(5);
     const [lastDeleted, setLastDeleted] = useState("");
     const [searchValue, setSearchValue] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
     const [products, setProducts] = useState<itemProps[]>([]);
     const navigate = useNavigate();
 
@@ -43,6 +45,7 @@ const Home = () => {
     }
 
     const getData = async () => {
+        setIsLoading(true);
         try {
             const response = await axiosService({
                 method: "get",
@@ -53,6 +56,8 @@ const Home = () => {
         } catch (error: any) {
             console.error('Error:', error);
             setProducts([]);
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -92,14 +97,16 @@ const Home = () => {
                 </Button>
             </div>
 
-            <Table
+            {isLoading ? <Spinner /> : <Table
                 headers={headers}
                 items={products}
                 deleteProduct={deleteProduct}
                 pageResults={pageResults}
                 setPageResults={setPageResults}
                 navigateTo={navigate}
-            />
+            />}
+
+
         </Layout>
     )
 }
