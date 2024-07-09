@@ -1,0 +1,56 @@
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -10;
+
+        &.active {
+            z-index: 1;
+        }
+    }
+
+    .dropdownToggle {
+        border: none;
+        background: none;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .optionMenu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: -80px;
+        top: -28px;
+        background: #fff;
+        box-shadow: 0 0 10px #3333333a;
+        border-radius: 10px;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+
+        &.active {
+            opacity: 1;
+            z-index: 2;
+            padding: 5px;
+            gap: 5px;
+            height: auto;
+
+            button {
+                padding: 10px;
+                border-radius: 10px;
+                border: none;
+
+                &:hover {
+                    background: #f5f5f5;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

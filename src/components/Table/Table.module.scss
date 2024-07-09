@@ -1,0 +1,113 @@
+.bankTable {
+    background: #ffffff;
+    padding: 20px;
+    margin-top: 20px;
+
+    .tableContainer {
+        overflow: auto;
+
+        table {
+            width: 100%;
+            min-width: 1100px;
+            border-collapse: collapse;
+            padding: 20px;
+            margin-bottom: 20px;
+
+            thead {
+                background: #f9fafc;
+
+                th {
+                    padding: 20px 0;
+                }
+            }
+
+            tr {
+                border-bottom: 1px solid #333;
+
+                td {
+                    padding: 8px;
+                    text-align: center;
+                }
+
+                .itemImage {
+                    max-width: 50px;
+                }
+            }
+        }
+    }
+
+    .tableFooter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        .result {
+            font-weight: 600;
+        }
+
+        .selectWrapper {
+            border: 1px solid #acacac;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+
+            &::before {
+                content: "▾";
+                font-size: 1.6rem;
+                display: flex;
+                position: absolute;
+                right: 14px;
+                color: #494949;
+                transform: translateY(-50%);
+                top: 50%;
+            }
+
+            select {
+                padding: 12px 32px;
+                padding-right: 45px;
+                border: none;
+                cursor: pointer;
+                appearance: none;
+                position: relative;
+                z-index: 1;
+                background: transparent;
+            }
+        }
+    }
+
+    .emptyTable {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        background: #fafafa;
+        border: 6px dashed #f0f0f0;
+
+        img {
+            width: 120px;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+    }
+
+    .deleteModal {
+        .description {
+            font-size: 1.35rem;
+            margin-bottom: 50px;
+
+            @media screen and (max-width: 768px) {
+                margin-bottom: 20px;
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

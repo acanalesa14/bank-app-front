@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (max-width: 420px) {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+}

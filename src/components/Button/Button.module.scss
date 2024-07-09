@@ -1,0 +1,43 @@
+.bankButton {
+    border-radius: 6px;
+    border: 1px solid transparent;
+    padding: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #eaecf2;
+    cursor: pointer;
+    transition: border-color 0.5s;
+    color: #000;
+    min-width: 120px;
+
+    &.primary {
+        background-color: #f5df66;
+    }
+
+    &:hover {
+        border-color: #acacac;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &.disabled {
+        position: relative;
+        cursor: not-allowed;
+
+        &::after {
+            content: "";
+            position: absolute;
+            background: #ffffff65;
+            inset: 0;
+        }
+        &:active {
+            transform: scale(1);
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        width: 100%;
+    }
+}

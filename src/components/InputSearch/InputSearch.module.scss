@@ -1,0 +1,17 @@
+.inputSearch {
+    input {
+        padding: 15px;
+        border: 1px solid #acacac;
+        border-radius: 10px;
+        font-size: 1.1rem;
+    }
+
+    @media screen and (max-width: 420px) {
+        width: 100%;
+
+        input {
+            font-size: 1rem;
+            width: 100%;
+        }
+    }
+}

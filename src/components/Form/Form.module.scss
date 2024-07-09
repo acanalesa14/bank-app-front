@@ -1,0 +1,157 @@
+.bankForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    width: 95%;
+    margin: 0 auto;
+    background: #ffffff;
+
+    header {
+        padding: 15px;
+        border-bottom: 2px solid #acacac;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            padding: 10px;
+            text-align: center;
+            font-size: 2.4rem;
+
+            @media screen and (max-width: 768px) {
+             
+                    font-size: 2rem;
+             
+            }
+
+            @media screen and (max-width: 420px) {
+             
+                    font-size: 1.4rem;
+             
+            }
+        }
+    }
+
+    .formContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        row-gap: 10px;
+        padding: 20px 40px;
+
+        .inputForm {
+            min-width: 280px;
+
+            &.disabled {
+                position: relative;
+                &::after {
+                    position: absolute;
+                    content: "";
+                    background: #ffffff91;
+                    inset: 0;
+                }
+            }
+
+            &.invalid {
+                .input {
+                    border: 2px solid red;
+                }
+            }
+
+            label {
+                font-size: 1.1rem;
+                font-weight: 700;
+                z-index: 1;
+                position: relative;
+            }
+
+            .input {
+                border: 2px solid #acacac;
+                border-radius: 10px;
+                overflow: hidden;
+                margin-top: 4px;
+                margin-bottom: 4px;
+
+                input {
+                    width: 100%;
+                    min-height: 60px;
+                    padding: 8px 15px;
+                    font-size: 1.3rem;
+                    border: none;
+                }
+
+                input[type="date"]::-webkit-inner-spin-button,
+                input[type="date"]::-webkit-clear-button {
+                    display: none;
+                }
+            }
+
+            .message {
+                font-size: 1rem;
+                color: #da0000;
+                font-weight: 500;
+                min-height: 24px;
+                height: auto;
+                display: block;
+                z-index: 1;
+                position: relative;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px 25px;
+
+            .inputForm {
+                width: 100%;
+                min-width: auto;
+                row-gap: 0;
+
+                label {
+                    font-size: 1rem;
+                }
+                .input {
+                    input {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .message {
+                    min-height: auto;
+                }
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+            .inputForm {
+                label {
+                    font-size: .9rem;
+                }
+                .input {
+                    input {
+                        font-size: 1rem;
+                        min-height: 45px;
+                    }
+                }
+
+                .message {
+                    min-height: auto;
+                }
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        padding: 20px 30px 30px 30px;
+
+        @media screen and (max-width: 768px) {
+            gap: 10px;
+        }
+    }
+}
